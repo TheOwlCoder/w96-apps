@@ -1,0 +1,141 @@
+//!wrt
+const { Theme } = w96.ui;
+/**
+ * The application class.
+ */
+class MyApp extends WApplication {
+    constructor() {
+        super();
+    }
+
+    /**
+     * The application entry point.
+     * @param argv The program arguments.
+     */
+    async main(argv) {
+        await super.main(argv);
+        this.title = "my-app";
+
+        // Create a simple window
+        const wnd = this.createWindow({
+            title: "Browser",
+            initialWidth: 900,
+            initialHeight: 600,
+            body: ` 
+            <div style="white-space: nowrap;" class="btabs">
+            <button class="btab1 w96-button" style="width: 100px; display: inline-block; margin: 0;">*tab 1</button>
+            </div>
+            <div style="white-space: nowrap;">
+                        <input class="burl w96-textbox" style="width: 93%; display: inline-block; margin: 0;" spellcheck="false">
+                        <button class="browsergo w96-button" style="width: 3%; display: inline-block; margin: 0;">Go</button>
+                        <button class="bnewtab w96-button" style="width: 3%; display: inline-block; margin: 0;">+</button>
+                    </div>
+                    <iframe class="nevertobeseen" style="width: 100%; height: 97%; display: none;" src="about:blank"></iframe>
+                    <iframe class="browserbody1" style="width: 100%; height: 97%" src="/_/C/user/app tests/browser/start.html"></iframe>`,
+            bodyClass: "my-app-wndbody-class",
+            icon: await Theme.getIconUrl('mime/executable', '16x16'),
+            taskbar: true
+        }, true); // The "true" here tells WApplication this is the main window.
+
+        // Show the window
+        const urlbar = wnd.getBodyContainer().getElementsByClassName("burl")[0];
+        let urlchange = false;
+        let selectedTab = 1;
+        let tabs = 1;
+        wnd.getBodyContainer().getElementsByClassName("browsergo")[0].addEventListener("click", function () {
+            let url = urlbar.value;
+            if (url.split(":")[0] != "https" || url.split(":")[0] != "http") {
+                url = "https://" + url;
+            }
+            if (url == "https://browser:home") {
+                url = "https://windows96.net/_/C/user/app%20tests/browser/start.html"
+            }
+            wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src = url;
+            urlbar.value = wnd.getBodyContainer().getElementsByClassName("browserbody1")[0].src;
+            urlchange = false;
+        })
+        window.setInterval(function () {
+            try {
+                if (urlbar !== document.activeElement && !urlchange) {
+                    urlbar.value = wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src;
+
+                    if (wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src == "https://windows96.net/_/C/user/app%20tests/browser/start.html") {
+                        urlbar.value = "browser:home"
+                    }
+                }
+            } catch (e) { }
+        }, 100)
+        urlbar.addEventListener("keypress", (event) => {
+            urlchange = true;
+            if (event.key === "Enter") {
+                let url = urlbar.value;
+                if (url.split(":")[0] != "https") {
+                    url = "https://" + url;
+                }
+                if (url == "https://browser:home") {
+                    url = "https://windows96.net/_/C/user/app%20tests/browser/start.html"
+                }
+                wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src = url;
+                urlbar.value = wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src;
+                wnd.title = wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src;
+                urlchange = false;
+            }
+        });
+        wnd.show();
+        wnd.getBodyContainer().getElementsByClassName("bnewtab")[0].addEventListener("click", function () {
+            const newtab = document.createElement("button");
+            newtab.innerHTML = `*tab ${tabs + 1}`;
+            newtab.classList = `btab${tabs + 1} w96-button`;
+            newtab.style = "width: 100px; display: inline-block; margin: 0;";
+            tabs++;
+            wnd.getBodyContainer().getElementsByClassName("btabs")[0].appendChild(newtab);
+            const newwindow = document.createElement("iframe");
+            newwindow.classList = `browserbody${tabs}`;
+            newwindow.style = "width: 100%; height: 97%";
+            newwindow.src = "/_/C/user/app tests/browser/start.html";
+            wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].style.display = "none"
+            wnd.getBodyContainer().getElementsByClassName("btab" + selectedTab)[0].innerHTML = "tab " + selectedTab;
+
+            selectedTab = tabs;
+            wnd.getBodyContainer().appendChild(newwindow);
+            const thisTab = tabs;
+
+            wnd.getBodyContainer().getElementsByClassName("btab" + thisTab)[0].addEventListener("click", function () {
+                try { wnd.getBodyContainer().getElementsByClassName("btab" + selectedTab)[0].innerHTML = "tab " + selectedTab } catch (e) { };
+                try { wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].style.display = "none" } catch (e) { }
+                wnd.getBodyContainer().getElementsByClassName("browserbody" + thisTab)[0].style.display = "block"
+                selectedTab = thisTab;
+                wnd.getBodyContainer().getElementsByClassName("btab" + thisTab)[0].innerHTML = "*tab " + thisTab
+            })
+            wnd.getBodyContainer().getElementsByClassName("btab" + thisTab)[0].addEventListener("contextmenu", function () {
+                this.remove()
+                wnd.getBodyContainer().getElementsByClassName("browserbody" + thisTab)[0].remove();
+            })
+        })
+        wnd.getBodyContainer().getElementsByClassName("btab1")[0].addEventListener("click", function () {
+            try { wnd.getBodyContainer().getElementsByClassName("btab" + selectedTab)[0].innerHTML = "tab " + selectedTab } catch (e) { };
+            try { wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].style.display = "none" } catch (e) { }
+            wnd.getBodyContainer().getElementsByClassName("browserbody1")[0].style.display = "block"
+            selectedTab = 1;
+            wnd.getBodyContainer().getElementsByClassName("btab1")[0].innerHTML = "*tab 1"
+        })
+        wnd.getBodyContainer().getElementsByClassName("btab" + 1)[0].addEventListener("contextmenu", function () {
+            this.remove()
+            wnd.getBodyContainer().getElementsByClassName("browserbody" + 1)[0].remove();
+        })
+
+    }
+
+    /**
+     * On program exit.
+     */
+    async ontermination() {
+        await super.ontermination();
+
+        // TODO Shutdown code
+    }
+
+}
+
+// Startup line
+return await WApplication.execAsync(new MyApp(), this.boxedEnv.args, this);
