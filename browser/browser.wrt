@@ -1,5 +1,5 @@
 //!wrt
-localStorage.setItem("webbrowserver", 1.1)
+localStorage.setItem("webbrowserver", 1.2)
 function checkForUpdates(r) {
     if (JSON.parse(r)["ver"] != localStorage.getItem("webbrowserver")) {
         alert("A new version of Web Browser is avaliable.<br>Use the install wizard to download it.<br>Version "+localStorage.getItem("webbrowserver")+" => "+JSON.parse(r)["ver"]+"<br><i>\""+JSON.parse(r)["changelog"]+"\"</i>")
