@@ -1,4 +1,19 @@
 //!wrt
+localStorage.setItem("webbrowserver", 1.1)
+function checkForUpdates(r) {
+    if (JSON.parse(r)["ver"] != localStorage.getItem("webbrowserver")) {
+        alert("A new version of Web Browser is avaliable.<br>Use the install wizard to download it.<br>Version "+localStorage.getItem("webbrowserver")+" => "+JSON.parse(r)["ver"]+"<br><i>\""+JSON.parse(r)["changelog"]+"\"</i>")
+    }
+}
+const requestOptions = {
+    method: "GET",
+    redirect: "follow"
+};
+
+fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/ver.json", requestOptions)
+    .then((response) => response.text())
+    .then((result) => checkForUpdates(result))
+    .catch((error) => console.error(error));
 const { Theme } = w96.ui;
 /**
  * The application class.
@@ -30,7 +45,7 @@ class MyApp extends WApplication {
                         <button class="browsergo w96-button" style="width: 3%; display: inline-block; margin: 0;">Go</button>
                         <button class="bnewtab w96-button" style="width: 3%; display: inline-block; margin: 0;">+</button>
                     </div>
-                    <iframe class="nevertobeseen" style="width: 100%; height: 97%; display: none;" src="about:blank"></iframe>
+                    <iframe class="nevertobeseenbutsomehowneeded" style="width: 100%; height: 97%; display: none;" src="about:blank"></iframe>
                     <iframe class="browserbody1" style="width: 100%; height: 97%" src="/_/C/user/appdata/Browser/start.html"></iframe>`,
             bodyClass: "my-app-wndbody-class",
             icon: await Theme.getIconUrl('mime/executable', '16x16'),
@@ -42,6 +57,7 @@ class MyApp extends WApplication {
         let urlchange = false;
         let selectedTab = 1;
         let tabs = 1;
+        let alltabs = 1;
         wnd.getBodyContainer().getElementsByClassName("browsergo")[0].addEventListener("click", function () {
             let url = urlbar.value;
             if (url.split(":")[0] != "https") {
@@ -99,6 +115,7 @@ class MyApp extends WApplication {
             selectedTab = tabs;
             wnd.getBodyContainer().appendChild(newwindow);
             const thisTab = tabs;
+            alltabs++;
 
             wnd.getBodyContainer().getElementsByClassName("btab" + thisTab)[0].addEventListener("click", function () {
                 try { wnd.getBodyContainer().getElementsByClassName("btab" + selectedTab)[0].innerHTML = "tab " + selectedTab } catch (e) { };
@@ -110,6 +127,10 @@ class MyApp extends WApplication {
             wnd.getBodyContainer().getElementsByClassName("btab" + thisTab)[0].addEventListener("contextmenu", function () {
                 this.remove()
                 wnd.getBodyContainer().getElementsByClassName("browserbody" + thisTab)[0].remove();
+                alltabs--;
+                if (alltabs <= 0) {
+                    wnd.close();
+                }
             })
         })
         wnd.getBodyContainer().getElementsByClassName("btab1")[0].addEventListener("click", function () {
@@ -122,6 +143,10 @@ class MyApp extends WApplication {
         wnd.getBodyContainer().getElementsByClassName("btab" + 1)[0].addEventListener("contextmenu", function () {
             this.remove()
             wnd.getBodyContainer().getElementsByClassName("browserbody" + 1)[0].remove();
+            alltabs--;
+            if (alltabs <= 0) {
+                wnd.close();
+            }
         })
         if ([...env.args] != "browser") {
             const newArgs = [...env.args]; newArgs.splice(0, 1); let msg = newArgs[0];
