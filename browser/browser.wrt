@@ -44,7 +44,7 @@ class MyApp extends WApplication {
         let tabs = 1;
         wnd.getBodyContainer().getElementsByClassName("browsergo")[0].addEventListener("click", function () {
             let url = urlbar.value;
-            if (url.split(":")[0] != "https" || url.split(":")[0] != "http") {
+            if (url.split(":")[0] != "https") {
                 url = "https://" + url;
             }
             if (url == "https://browser:home") {
@@ -123,6 +123,13 @@ class MyApp extends WApplication {
             this.remove()
             wnd.getBodyContainer().getElementsByClassName("browserbody" + 1)[0].remove();
         })
+        if ([...env.args] != "browser") {
+            const newArgs = [...env.args]; newArgs.splice(0, 1); let msg = newArgs[0];
+            if (msg.split(":")[0] != "https") {
+                msg = "https://" + msg;
+            }
+            wnd.getBodyContainer().getElementsByClassName("browserbody1")[0].src = msg; wnd.getBodyContainer().getElementsByClassName("burl")[0].value = msg;
+        }
 
     }
 
