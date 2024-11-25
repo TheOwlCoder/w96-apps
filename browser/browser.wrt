@@ -31,7 +31,7 @@ class MyApp extends WApplication {
                         <button class="bnewtab w96-button" style="width: 3%; display: inline-block; margin: 0;">+</button>
                     </div>
                     <iframe class="nevertobeseen" style="width: 100%; height: 97%; display: none;" src="about:blank"></iframe>
-                    <iframe class="browserbody1" style="width: 100%; height: 97%" src="/_/C/user/app tests/browser/start.html"></iframe>`,
+                    <iframe class="browserbody1" style="width: 100%; height: 97%" src="/_/C/user/appdata/Browser/start.html"></iframe>`,
             bodyClass: "my-app-wndbody-class",
             icon: await Theme.getIconUrl('mime/executable', '16x16'),
             taskbar: true
@@ -48,7 +48,7 @@ class MyApp extends WApplication {
                 url = "https://" + url;
             }
             if (url == "https://browser:home") {
-                url = "https://windows96.net/_/C/user/app%20tests/browser/start.html"
+                url = "https://windows96.net/_/C/user/appdata/Browser/start.html"
             }
             wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src = url;
             urlbar.value = wnd.getBodyContainer().getElementsByClassName("browserbody1")[0].src;
@@ -59,7 +59,7 @@ class MyApp extends WApplication {
                 if (urlbar !== document.activeElement && !urlchange) {
                     urlbar.value = wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src;
 
-                    if (wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src == "https://windows96.net/_/C/user/app%20tests/browser/start.html") {
+                    if (wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src == "https://windows96.net/_/C/user/appdata/Browser/start.html") {
                         urlbar.value = "browser:home"
                     }
                 }
@@ -73,7 +73,7 @@ class MyApp extends WApplication {
                     url = "https://" + url;
                 }
                 if (url == "https://browser:home") {
-                    url = "https://windows96.net/_/C/user/app%20tests/browser/start.html"
+                    url = "https://windows96.net/_/C/user/appdata/Browser/start.html"
                 }
                 wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src = url;
                 urlbar.value = wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].src;
@@ -92,7 +92,7 @@ class MyApp extends WApplication {
             const newwindow = document.createElement("iframe");
             newwindow.classList = `browserbody${tabs}`;
             newwindow.style = "width: 100%; height: 97%";
-            newwindow.src = "/_/C/user/app tests/browser/start.html";
+            newwindow.src = "/_/C/user/appdata/Browser/start.html";
             wnd.getBodyContainer().getElementsByClassName("browserbody" + selectedTab)[0].style.display = "none"
             wnd.getBodyContainer().getElementsByClassName("btab" + selectedTab)[0].innerHTML = "tab " + selectedTab;
 
