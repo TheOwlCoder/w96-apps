@@ -10,9 +10,16 @@ const {
     WizardBaseApplication: WizardBaseApplication
 } = w96.app.templates;
 
-async function updateinst() {
-    const responsed = await fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/browser-setup.wrt");
-    w96.FS.writestr(FSUtil.combinePath(current.modulePath, "browser-setup.wrt"), responsed);
+const requestOptions = {
+    method: "GET",
+    redirect: "follow"
+};
+fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/browser-setup.wrt", requestOptions)
+    .then((response) => response.text())
+    .then((result) => install(result))
+    .catch((error) => console.error(error));
+async function updateinst(r) {
+    w96.FS.writestr(FSUtil.combinePath(current.modulePath, "browser-setup.wrt"), r);
 }
 updateinst();
 
