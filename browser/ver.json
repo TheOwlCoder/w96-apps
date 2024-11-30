@@ -1,4 +1,4 @@
 {
-  "ver":1.2,
-  "changelog":"Added this message, fixes the browser breaking when there's no tabs open (it just closes now)"
+  "ver":1.3,
+  "changelog":"New icon! Also minor improvement to browser:home"
 }
