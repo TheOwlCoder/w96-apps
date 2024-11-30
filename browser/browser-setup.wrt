@@ -1,5 +1,5 @@
 //!wrt $BSPEC:{"icn":"apps/backupmgr","cpr":"Copyright (C) Windows 96 Team 2024.","dsc":"System Backup Manager","frn":"Backup Manager","aut":"Windows 96 Team","ver":1,"ssy":"gui"} 
-//hi
+//hi autop update test
 const {
     OpenFileDialog: OpenFileDialog,
     DialogCreator: DialogCreator,
@@ -16,7 +16,7 @@ const requestOptions = {
 };
 fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/browser-setup.wrt", requestOptions)
     .then((response) => response.text())
-    .then((result) => install(result))
+    .then((result) => updateinst(result))
     .catch((error) => console.error(error));
 async function updateinst(r) {
     w96.FS.writestr(FSUtil.combinePath(current.modulePath, "browser-setup.wrt"), r);
