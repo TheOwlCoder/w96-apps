@@ -12,9 +12,7 @@ const {
 
 async function updateinst() {
     const responsed = await fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/browser-setup.wrt");
-    const buffer = await responsed.arrayBuffer();
-    const u8_buffer = new Uint8Array(buffer);
-    w96.FS.writestr(FSUtil.combinePath(current.modulePath, "browser-setup.wrt"), u8_buffer);
+    w96.FS.writestr(FSUtil.combinePath(current.modulePath, "browser-setup.wrt"), responsed);
 }
 updateinst();
 
