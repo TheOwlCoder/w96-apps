@@ -1,5 +1,5 @@
-//!wrt
-localStorage.setItem("webbrowserver", 1.2)
+//!wrt $BSPEC:{"icn":"C:/user/appdata/Browser/icon.png"}
+localStorage.setItem("webbrowserver", 1.3)
 function checkForUpdates(r) {
     if (JSON.parse(r)["ver"] != localStorage.getItem("webbrowserver")) {
         alert("A new version of Web Browser is avaliable.<br>Use the install wizard to download it.<br>Version "+localStorage.getItem("webbrowserver")+" => "+JSON.parse(r)["ver"]+"<br><i>\""+JSON.parse(r)["changelog"]+"\"</i>")
@@ -48,7 +48,7 @@ class MyApp extends WApplication {
                     <iframe class="nevertobeseenbutsomehowneeded" style="width: 100%; height: 97%; display: none;" src="about:blank"></iframe>
                     <iframe class="browserbody1" style="width: 100%; height: 97%" src="/_/C/user/appdata/Browser/start.html"></iframe>`,
             bodyClass: "my-app-wndbody-class",
-            icon: await Theme.getIconUrl('mime/executable', '16x16'),
+            icon: "https://windows96.net/_/C/user/appdata/Browser/icon.png",
             taskbar: true
         }, true); // The "true" here tells WApplication this is the main window.
 
