@@ -1,0 +1,175 @@
+//!wrt $BSPEC:{"icn":"apps/backupmgr","cpr":"Copyright (C) Windows 96 Team 2024.","dsc":"System Backup Manager","frn":"Backup Manager","aut":"Windows 96 Team","ver":1,"ssy":"gui"} 
+//hi
+const {
+    OpenFileDialog: OpenFileDialog,
+    DialogCreator: DialogCreator,
+    Theme: Theme
+} = w96.ui, {
+    RadioBox: RadioBox
+} = w96.ui.components, {
+    WizardBaseApplication: WizardBaseApplication
+} = w96.app.templates;
+
+async function updateinst() {
+    const responsed = await fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/browser-setup.wrt");
+    const buffer = await responsed.arrayBuffer();
+    const u8_buffer = new Uint8Array(buffer);
+    w96.FS.writestr(FSUtil.combinePath(current.modulePath, "browser-setup.wrt"), u8_buffer);
+}
+updateinst();
+
+class BackupManagerApp extends WizardBaseApplication {
+    constructor() {
+        super()
+    }
+    async main(e) {
+        await super.main(e);
+        const t = e.includes("--no-restore"),
+            o = this.findPage("intro");
+        o.titleText = "Welcome to the Browser Setup Wizard", o.graphic = "https://github.com/TheOwlCoder/w96-apps/blob/main/instgraphic.png?raw=true", o.body = "This wizard will install Web Browser onto your machine.<br>Press next to continue.<br>Note: You may need to close and reopen the installer to update the installer to the latest version.", o.buttons[1].onclick = () => this.openPage(t ? "backup" : "backup-select", []);
+        let a = "backup";
+        this.pages.push({
+            id: "backup-select",
+            type: "page",
+            body: '<article class="text" style="background: white">Fetching...</article>',
+            graphic: "/system/resource/app/backup/graphic-top.png",
+            titleText: "License Agreement",
+            description: "Please review the terms and conditions.",
+            buttons: [{
+                class: "back",
+                onclick: () => this.openPage("intro", []),
+                enabled: !0,
+                text: "Back"
+            }, {
+                class: "next",
+                onclick: () => {
+                    "backup" == a ? this.openPage("backup", []) : this.openPage("restore", [])
+                },
+                enabled: !0,
+                text: "Next"
+            }, {
+                class: "cancel",
+                onclick: () => this.quit(),
+                enabled: !0,
+                text: "Cancel"
+            }],
+            onopen: (e, t) => {
+                const o = document.createElement("style");
+                o.innerHTML = `article { flex: 1; height: 100%; width: 100%; box-sizing: border-box; resize: none; font-family: sans-serif; overflow-x: hidden; overflow-y: scroll; background: gainsboro; line-height: 1.2em; font-size: 130%; padding: 3px; }`
+                e.appendChild(o)
+                w96.FS.readstr("W:/system/src/v3-release/changelog.md").then(d => {
+                    var converter = new showdown.Converter();
+                    e.querySelector('.text').innerHTML = converter.makeHtml("#License agreement\nYou may modify this program as you wish.\n\nIt is prohibited from distributing this program as your own.\n\nI (MrOwlsss) is not responsible for any potential damages (there should not be any).\n\n(P) MrOwlsss 2024");
+                });
+            }
+        }), this.pages.push({
+            id: "backup",
+            type: "page",
+            body: "\n                <div>\n                    Please input the directory where you want to install to.\n\nTo begin the installation, press the install button. <br><br><center><input id='fpti' class='w96-textbox' style='width: 20vw' value='C:/system/local/bin/'></input></center></div>",
+            graphic: "/system/resource/app/backup/graphic-top.png",
+            titleText: "Configure Install",
+            description: "Setup your installation.",
+            buttons: [{
+                class: "back",
+                onclick: () => this.openPage("backup-select", []),
+                enabled: !0,
+                text: "Back"
+            }, {
+                class: "next",
+                onclick: (e) => {
+                    localStorage.setItem("binstallpath", document.getElementById("fpti").value + "browser")
+                    this.openPage("installing", []);
+                },
+                enabled: !0,
+                text: "Install"
+            }, {
+                class: "cancel",
+                onclick: () => this.quit(),
+                enabled: !0,
+                text: "Cancel"
+            }],
+            onopen: (e, t) => { }
+        }), this.pages.push({
+            id: "installing",
+            type: "page",
+            body: '\n                <div id="dd">\n                    Installing Web Browser onto your computer. Please wait..</div>',
+            graphic: "/system/resource/aPP/backup/graphic-top.png",
+            titleText: "Installing",
+            description: "Please wait",
+            buttons: [{}],
+            onopen: (e, t) => {
+                const requestOptions = {
+                    method: "GET",
+                    redirect: "follow"
+                };
+
+                fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/start.html", requestOptions)
+                    .then((response) => response.text())
+                    .then((result) => dohtmlshit(result))
+                    .catch((error) => console.error(error));
+
+                function dohtmlshit(r) {
+                    w96.FS.mkdir("C:/user/appdata/Browser/")
+                    window.setTimeout(() => {
+                        w96.FS.touch("C:/user/appdata/Browser/start.html")
+                        w96.FS.writestr("C:/user/appdata/Browser/start.html", r)
+                    }, 100)
+                    icon();
+                }
+                async function icon() {
+                    const responsed = await fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/browsericon.png");
+                    const buffer = await responsed.arrayBuffer();
+                    const u8_buffer = new Uint8Array(buffer);
+                    w96.FS.writebin("C:/user/appdata/Browser/icon.png", u8_buffer);
+                    const requestOptions = {
+                        method: "GET",
+                        redirect: "follow"
+                    };
+                    fetch("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/browser/browser.wrt", requestOptions)
+                        .then((response) => response.text())
+                        .then((result) => install(result))
+                        .catch((error) => console.error(error));
+                }
+
+
+
+
+                function install(r) {
+                    const path = localStorage.getItem("binstallpath");
+                    w96.FS.touch(path)
+                    w96.FS.writestr(path, r)
+                    w96.FS.touch("C:/user/desktop/Web Browser.link");
+                    w96.FS.writestr("C:/user/desktop/Web Browser.link", '{"action":"C:/system/local/bin/browser", "icon": "C:/user/appdata/Browser/icon.png"}')
+
+                    document.getElementById("dd").innerHTML = "\n                    Web Browser has been installed onto your computer.";
+                    const finbutton = document.createElement("button");
+                    finbutton.classList = "w96-button";
+                    finbutton.innerHTML = "Finish";
+                    document.getElementById("dd").parentElement.parentElement.parentElement.getElementsByClassName("buttons")[0].innerHTML = "";
+                    document.getElementById("dd").parentElement.parentElement.parentElement.getElementsByClassName("buttons")[0].appendChild(finbutton);
+                    finbutton.addEventListener("click", () => {
+                        document.getElementById("dd").parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                        Array.from(document.getElementsByClassName("taskbar-task")).forEach((item) => {
+                            if (item.getElementsByTagName("div")[1].innerHTML == "Browser Setup Wizard") {
+                                item.remove();
+                            }
+                        })
+                    })
+
+                }
+            }
+        }), this.pages.push({
+            id: "installed",
+            type: "page",
+            body: '\n                <div>\n                    Web Browser has been installed onto your computer.',
+            graphic: "/system/resource/aPP/backup/graphic-top.png",
+            titleText: "Installed",
+            description: "Installation finished.",
+            buttons: [{}],
+            onopen: (e, t) => {
+            }
+        }), this.openPage("intro", []), this.mainwnd.setTitle("Browser Setup Wizard"), this.mainwnd.setWindowIcon(await Theme.getIconUrl("apps/backupmgr", "16x16"))
+    }
+}
+
+return await WApplication.execAsync(new BackupManagerApp(), this.boxedEnv.args, this);
