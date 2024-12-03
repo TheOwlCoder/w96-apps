@@ -1,4 +1,5 @@
 {
-  "ver":1.3,
-  "changelog":"New icon! Also minor improvement to browser:home. The installer now auto-updates, but for that you need to download the new installer.<br><a href='https://github.com/TheOwlCoder/w96-apps/blob/main/browser/browser-setup.wrt'>Install new installer</a>"
+  "ver":1.4,
+  "changelog":"The Browser now attempts to switch to a random tab upon closing a tab.",
+  "1.3":"New icon! Also minor improvement to browser:home. The installer now auto-updates, but for that you need to download the new installer.<br><a href='https://github.com/TheOwlCoder/w96-apps/blob/main/browser/browser-setup.wrt'>Install new installer</a>"
 }
