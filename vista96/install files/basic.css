@@ -1,0 +1,128 @@
+.user-taskbar {
+    background-image: linear-gradient(to bottom, #87887a, #3d3e40 50%, #1e1f21 50%, #18191b);
+    max-height: 40px;
+    height: 40px;
+    vertical-align: center;
+}
+
+.start-menu>.container {
+    background-image: linear-gradient(to bottom, #585E5F 15%, #3E3E3E 40%, #141414 55%);
+}
+
+.window-dlg:not(.ui-sortable-helper) {
+    border: none;
+    background-image: linear-gradient(to bottom, #98B4D0, #A8C1DD, #B8D0E9);
+    background-color: #FFFFFF;
+}
+
+.titlebar {
+    background-image: linear-gradient(to bottom, #98B4D0, #A8C1DD, #B8D0E9);
+}
+
+.titlebar>.titlebar-minbutton {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/min-basic.svg);
+    border-radius: 2px;
+    top: -3px;
+    /* outline: 1px solid #64758d; */
+    border: 0;
+    width: 40px;
+    box-shadow: none;
+    background-color: transparent;
+    z-index: 3;
+    margin-right: 2px;
+}
+
+.titlebar>.titlebar-minbutton:hover {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/min-basic-hover.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar>.titlebar-minbutton:active {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/min-basic-active.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar-title-disabled>.titlebar-minbutton {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/min-basic-inactive.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar>.titlebar-maxbutton {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic.svg);
+    border-radius: 2px;
+    top: -3px;
+    border: 0;
+    width: 40px;
+    box-shadow: none;
+    background-color: transparent;
+    z-index: 3;
+    margin-right: 2px;
+}
+
+.titlebar>.titlebar-maxbutton:active {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic-active.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar-title-disabled>.titlebar-maxbutton {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic-inactive.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar>.titlebar-maxbutton:hover {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic-hover.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar>.titlebar-closebutton {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/close-basic.svg);
+    border-radius: 2px;
+    top: -3px;
+    border: 0;
+    width: 40px;
+    box-shadow: none;
+    background-color: transparent;
+    z-index: 3;
+    margin-right: 2px;
+
+}
+
+.titlebar>.titlebar-closebutton:active {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/close-basic-active.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar-title-disabled>.titlebar-closebutton {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/close-basic-inactive.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar>.titlebar-closebutton:hover {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/close-basic-hover.svg);
+    border: 0;
+    box-shadow: none;
+}
+
+.titlebar>.titlebar-maxbutton.titlebar-maxxed:active {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic-active.svg);
+}
+
+.titlebar>.titlebar-maxbutton.titlebar-maxxed:hover {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic-hover.svg);
+}
+
+.titlebar-title-disabled>.titlebar-maxbutton.titlebar-maxxed {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic-inactive.svg);
+}
+
+.titlebar>.titlebar-maxbutton.titlebar-maxxed {
+    background-image: url(https://github.com/TheOwlCoder/w96-apps/raw/refs/heads/main/vista96/max-basic.svg);
+}

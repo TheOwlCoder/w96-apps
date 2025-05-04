@@ -1,0 +1,213 @@
+.window-dlg:not(.ui-sortable-helper) {
+    border: 1px solid #aaa;
+    box-shadow: 4px 5px 18px black;
+    outline: none;
+    border-radius: 5px;
+    background-color: rgba(153, 231, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.window-html:not(.ui-sortable-helper) {
+    background: linear-gradient(to bottom, #F0F0F0 65%, #e4e2e2 50%);
+    border-radius: 2px;
+    border: 1px solid #5C6A79;
+    box-shadow: 0px 0px 0 1px #c8ccd0;
+}
+
+.titlebar {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #00000000;
+    background: #00000000;
+    background-image: url("https://raw.githubusercontent.com/TheOwlCoder/w96-apps/refs/heads/main/vista96/glass-texture.svg");
+    font-family: "Segoe UI", Arial;
+}
+
+.window-html {
+    background-color: rgb(192, 192, 192);
+}
+
+.titlebar>.titlebar-closebutton {
+    width: 46px;
+    height: 18px;
+    border: 1px solid #b7b7b7ab;
+    background-color: transparent;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-close-active.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    top: -9px;
+    border-bottom-right-radius: 5px;
+
+    border-left-color: #93645D;
+    border-bottom-color: #50221A;
+    border-right-color: #50221A;
+    box-shadow: inset 0px 0 2px white;
+
+    margin-top: 4px;
+    margin-bottom: -3px;
+}
+
+.titlebar>.titlebar-closebutton:hover {
+    box-shadow: 0px 0px 4px 1px #ff7c5c;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-close-hover.png);
+    border-bottom-color: #8B592A;
+    border-right-color: #8B592A;
+    border-left-color: #7E3728;
+    z-index: 3;
+}
+
+.titlebar>.titlebar-closebutton:active {
+    z-index: 3;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-close-held.png);
+    border-right-color: #1B0601;
+    border-bottom-color: #83532A;
+    border-left-color: #905849;
+    box-shadow: 0px 0px 4px 1px #DD7157;
+}
+
+.titlebar-title-disabled>.titlebar-closebutton {
+    width: 46px;
+    height: 18px;
+    border: 1px solid #b7b7b7ab;
+    background-color: transparent;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-x.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    top: -9px;
+    border-bottom-right-radius: 5px;
+    box-shadow: none;
+    box-shadow: inset 0px 0px 2px 0px #bbbbbbab;
+}
+
+.titlebar>.titlebar-maxbutton {
+    width: 26px;
+    height: 18px;
+    border: 1px solid #b7b7b7ab;
+    border-right: none;
+    top: -9px;
+    background-color: transparent;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-max-active.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0px 0 2px white;
+    border-left-color: #656667;
+    border-bottom-color: #393A3D;
+    border-right-color: #393A3D;
+
+    margin-top: 4px;
+    margin-bottom: -3px;
+}
+
+.titlebar>.titlebar-maxbutton.titlebar-maxxed {
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-restore-active.png);
+}
+
+.titlebar-title-disabled>.titlebar-maxbutton {
+    width: 26px;
+    height: 18px;
+    border: 1px solid #b7b7b7ab;
+    border-right: none;
+    top: -9px;
+    background-color: transparent;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-max.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: none;
+    box-shadow: inset 0px 0px 2px 0px #bbbbbbab;
+}
+
+.titlebar-title-disabled>.titlebar-maxbutton.titlebar-maxxed {
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-restore.png);
+}
+
+.titlebar>.titlebar-minbutton {
+    width: 27px;
+    height: 18px;
+    border: 1px solid #b7b7b7ab;
+    border-right: none;
+    top: -9px;
+    background-color: transparent;
+    border-bottom-left-radius: 5px;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-min-active.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0px 0 2px white;
+    border-left-color: #656667;
+    border-bottom-color: #393A3D;
+    border-right-color: #393A3D;
+
+    margin-top: 4px;
+    margin-bottom: -3px;
+}
+
+.titlebar>.titlebar-minbutton:hover,
+.titlebar>.titlebar-maxbutton:hover {
+    box-shadow: 0px 0px 4px 1px #64CDF8;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-min-hover.png);
+    border-right-color: #2E6E88;
+    border-bottom-color: #2E6E88;
+    border-left-color: #27404D;
+    z-index: 3;
+}
+
+.titlebar>.titlebar-maxbutton:hover {
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-max-hover.png);
+}
+
+.titlebar>.titlebar-maxbutton.titlebar-maxxed:hover {
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-restore-hover.png);
+}
+
+.titlebar>.titlebar-minbutton:active,
+.titlebar>.titlebar-maxbutton:active {
+    z-index: 3;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-min-held.png);
+    border-right-color: #2E6E88;
+    border-bottom-color: #2E6E88;
+    border-left-color: #162A39;
+    box-shadow: 0px 0px 4px 1px #64CDF8;
+}
+
+.titlebar>.titlebar-maxbutton:active {
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-max-held.png);
+}
+
+.titlebar>.titlebar-maxbutton.titlebar-maxxed:active {
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-restore-held.png);
+}
+
+.titlebar-title-disabled>.titlebar-minbutton {
+    width: 27px;
+    height: 18px;
+    border: 1px solid #b7b7b7ab;
+    border-right: none;
+    top: -9px;
+    background-color: transparent;
+    border-bottom-left-radius: 5px;
+    background-image: url(https://rel2sp2.windows96.net/system/resource/themes/aero/windows/button-min.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0px 0px 2px 0px #bbbbbbab;
+}
+
+.titlebar[cbxstyle="WS_CBX_CLOSE"]>.titlebar-closebutton {
+    border-bottom-left-radius: 5px;
+}
+
+.titlebar-title {
+    text-decoration: none;
+    font-size: 13px;
+    height: 100%;
+    letter-spacing: normal;
+    color: black;
+    text-shadow: 0px 0px 5px #fff, 0px 1px 3px #fff;
+	padding-right: 4px;
+	max-width: calc(100% - 110px) !important;
+	padding-left: 0px;
+}
+
+
+.w96-panel.prompt-container {
+    background-color: white;
+}
+

@@ -1,0 +1,134 @@
+@font-face {
+    font-family: "Segoe UI";
+    src: url(https://windows96.net/_/C/system/resource/themes/vista/segoeui.woff2) format("woff2");
+    font-weight: 400;
+}
+
+.w96-button,
+.w96-button.ok,
+.w96-button.cancel {
+    background-image: linear-gradient(to bottom, #eff1ee, #e9ebe8 50%, #dcdedb 50%, #ced0cc);
+    box-shadow: none;
+    border-radius: 3px;
+    border: 1px solid #6e706d;
+}
+
+.w96-button:hover,
+.w96-button.ok:hover,
+.w96-button.cancel:hover {
+    border: 1px solid #46d8fa;
+    box-shadow: 0px 0px 3px 1.5px #3c7eb3;
+}
+
+.w96-button:active,
+.w96-button.ok:active {
+    border: 1px solid #46d8fa;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px 2px #3c7eb3;
+    outline: none;
+    background-image: linear-gradient(to bottom, #e9ebe8, #eff1ee 50%, #b7d3e0 50%, #c9dbe4);
+}
+
+
+.user-taskbar {
+    background-image: linear-gradient(to bottom, #87887ae1, #3d3e40e1 50%, #1e1f21e1 50%, #18191be1);
+    max-height: 40px;
+    height: 40px;
+    vertical-align: center;
+}
+
+.taskbar-notify {
+    border: none;
+    color: white;
+}
+
+.taskbar-task {
+    background-image: linear-gradient(to bottom, #87887ac9, #3d3e40c9 50%, #1e1f21c9 50%, #18191bc9);
+    border: 1px, solid black;
+    border-radius: 5px;
+    color: white;
+}
+
+.taskbar-task-text {
+    padding: 6px 0;
+}
+
+.taskbar-task_active {
+    background-image: linear-gradient(to bottom, #87887a, #3d3e40 50%, #1e1f21 50%, #18191b);
+}
+
+.taskbar-task:focus {
+    outline: none;
+}
+
+.quick-launch .item {
+    margin-top: 5px;
+}
+
+.start_button.w96-button {
+    background-size: 45px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(0, 0, 0, 0);
+    margin-top: -15px;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 60px;
+    box-shadow: none;
+    background-color: #18191b00;
+}
+
+.start_button::after {
+    content: ""
+}
+
+.start_button:hover {
+    filter: drop-shadow(0 0 10px #00ffff95);
+    background-image: url(https://raw.githubusercontent.com/TheOwlCoder/w96-apps/3a9cf0b9a0664bd4058701d76f9d1f53a9a9de6a/vista96/vista96.svg);
+    border: 0;
+    outline: 0;
+}
+
+.start_button {
+    background-image: url(https://raw.githubusercontent.com/TheOwlCoder/w96-apps/3a9cf0b9a0664bd4058701d76f9d1f53a9a9de6a/vista96/vista96.svg);
+    border: 0;
+}
+
+.start_button:active {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+    background-color: #00000000;
+    background-image: url(https://raw.githubusercontent.com/TheOwlCoder/w96-apps/3a9cf0b9a0664bd4058701d76f9d1f53a9a9de6a/vista96/vista96.svg);
+}
+
+
+.start_button.sb-active {
+    outline: none;
+    box-shadow: none;
+}
+
+.select-box {
+    outline-color: #00000000;
+    border: 1px, solid rgba(42, 152, 255, 0.953);
+    background-color: rgba(42, 138, 255, 0.42);
+}
+
+.w96-menubar {
+    background-image: linear-gradient(to bottom, #f3f6f9 25%, #dfe4f4 75%);
+}
+
+.wcontext-menu {
+    background-color: #F0F0F0;
+}
+
+.wcontext-menu .item:hover {
+    outline: 1px solid #A8D8EB;
+    /* background: #DBECF3 !important; */
+    color: black !important;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #DDECFD, #C2DCFD) !important;
+    box-shadow: 0px 0px 0px 1px #EBF4FD !important;
+    outline: 1px solid #7DA2CE;
+}
