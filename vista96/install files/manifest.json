@@ -1,8 +1,8 @@
 {
-    "id": "mt",
-    "name": "Windows Vista",
-    "description": "i made dis",
-    "author": "me",
+    "id": "vista96",
+    "name": "Vista96",
+    "description": "A Windows Vista theme for Windows 96 that has both Aero and Basic (and soon Longhorn) varients!",
+    "author": "Owlsss (@emailer)",
     "themeType": "normal",
     "iconTheme": "W:/system/resource/icons/win96",
     "soundPack": "W:/system/resource/sounds/win96",
@@ -25,7 +25,7 @@
                 "./basic.css"
             ],
             "scripts": [
-                "./theme.js"
+                "./aeromenu.wrt"
             ],
             "rebootSuggested": true,
             "resourceMap": []
