@@ -1,1 +1,34 @@
-[""]
+{
+    "id": "mt",
+    "name": "Windows Vista",
+    "description": "i made dis",
+    "author": "me",
+    "themeType": "normal",
+    "iconTheme": "W:/system/resource/icons/win96",
+    "soundPack": "W:/system/resource/sounds/win96",
+    "rebootSuggested": true,
+    "stylesheets": [
+        "theme.css",
+        "startmenu.css",
+        "window.css"
+    ],
+    "scripts": [
+        "./aeromenu.wrt"
+    ],
+    "variants": [
+        {
+            "name": "Vista Basic",
+            "stylesheets": [
+                "./theme.css",
+                "./startmenu.css",
+                "./window.css",
+                "./basic.css"
+            ],
+            "scripts": [
+                "./theme.js"
+            ],
+            "rebootSuggested": true,
+            "resourceMap": []
+        }
+    ]
+}
